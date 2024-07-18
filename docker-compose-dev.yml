@@ -3,11 +3,13 @@ version: '3'
 services:
   mongo-gui:
     container_name: "mongo-gui"
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     restart: always
     ports:
       - "3000:4321"
     environment:
-      - MONGO_URL=mongodb://localhost:27017
+      MONGO_URL: ${MONGO_URL}
+      MONGOGUI_USERNAME: ${MONGOGUI_USERNAME}
+      MONGOGUI_PASSWORD: ${MONGOGUI_PASSWORD}

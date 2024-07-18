@@ -1,9 +1,11 @@
 # Definindo a imagem base
-FROM node:lts-stretch
+FROM node:lts-alpine
 
 COPY . /app
 
 WORKDIR /app
+
+ENV OPENAI_API_KEY key
 
 RUN npm install
 

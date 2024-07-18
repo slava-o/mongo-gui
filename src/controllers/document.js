@@ -1,6 +1,6 @@
 const ObjectID = require('mongodb').ObjectID;
 const EJSON = require('bson').EJSON;
-const openai = require('../services/openai');  
+const openai = require('../services/openai');
 const Model = require('../models');
 
 
@@ -157,7 +157,7 @@ const filter = async (req, res, next) => {
     const skip = Number(options.skip) || 0;
     const documentId = req.documentId;
     if (documentId) query._id = documentId;
-    const documents = await model.find(query, options).toArray();
+    const documents = await model.find(query, options).sort({_id:-1}).toArray();
     const count = await model.countDocuments(query, options);
     // const [documents, count] = await Promise.all([getDocuments, getCount])
     let data = {

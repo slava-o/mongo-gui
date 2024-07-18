@@ -1,12 +1,17 @@
 [![npm version](https://badge.fury.io/js/mongo-gui.svg)](https://www.npmjs.com/package/mongo-gui)
 ![Known Vulnerabilities](https://snyk.io/test/npm/mongo-gui/badge.svg)
-![GitHub stars](https://img.shields.io/github/stars/arunbandari/mongo-gui.svg)
+![GitHub stars](https://img.shields.io/github/stars/slava-o/mongo-gui.svg)
 
 #  Mongo GUI
 A web-based MongoDB graphical user interface.
+FORK from https://github.com/arunbandari/mongo-gui
 
-## Demo
-Read-only demo: http://20.106.238.56:4321/
+## UPD by me:
+ - fixed http auth with environment for docker-compose
+ - updated docker image and pushed to hub https://registry.hub.docker.com/r/slavaotd/mongo-gui
+ - lightweight docker image from alpine linux
+ - fixed undefined open api key exception
+ - all documents default sort desc by _id !
 
 ## Mongo GUI Features
  - Connect to local/remote mongodb instances
@@ -29,7 +34,7 @@ The following are the different ways to install **mongo-gui**.
  - Install the module globally using the command ```npm install -g mongo-gui```
  - Then use the command ```mongo-gui``` to run the application
 ### From github:
- - First of all, clone the **mongo-gui** repository using the command ```git clone https://github.com/arunbandari/mongo-gui``` or download the zip file from [here](https://github.com/arunbandari/mongo-gui/archive/master.zip).
+ - First of all, clone the **mongo-gui** repository using the command ```git clone https://github.com/slava-o/mongo-gui``` or download the zip file from [here](https://github.com/slava-o/mongo-gui/archive/master.zip).
  - Change the directory to mongo-gui ```cd mongo-gui```
  - Install all the dependencies ```npm install```
  - Start the application using either ```npm start``` or ```node server.js``` command
@@ -44,12 +49,14 @@ version: '3'
 services:
   mongo-gui:
     container_name: "mongo-gui"
-    image: ugleiton/mongo-gui
+    image: slavaotd/mongo-gui
     restart: always
     ports:
       - "4321:4321"
     environment:
-      - MONGO_URL=mongodb://localhost:27017
+      MONGO_URL: mongodb://localhost:27017
+      MONGOGUI_USERNAME: "user"
+      MONGOGUI_PASSWORD: "pass"
 ```
 
 ## Mongo GUI Usage
@@ -74,11 +81,11 @@ Available options:
 ## Authentication in Mongo GUI
 When you want to use the interface on a remote server, you need to protect your data. Mongo-gui provides you with a simple authentication facility for this. This is completely optional, if you don't want authorization you don't use it. To use authorization, follow these steps:
 - Create a ```.env ``` file in the main directory.
-- In this file, create ```USERNAME=<your_username>``` variable for your username and ```PASSWORD="<your_password>"``` variable for your password.
+- In this file, create ```MONGOGUI_USERNAME=<your_username>``` variable for your username and ```MONGOGUI_PASSWORD="<your_password>"``` variable for your password.
 - Restart your server.
 
 That's it. If you are working on your own computer, or if you do not need security, you can turn off the variables you have defined in the ```.env ``` file by putting a comment before them, e.g.
-- ```#USERNAME=<your_username>```
+- ```#MONGOGUI_USERNAME=<your_username>```
 
 Or you can delete your ```.env ``` file.
 
@@ -116,4 +123,4 @@ This setup guide should provide your users with all they need to integrate the O
 
 
 ## License
-[MIT](https://github.com/arunbandari/mongo-gui/blob/master/LICENSE)
+[MIT](https://github.com/slava-o/mongo-gui/blob/master/LICENSE)

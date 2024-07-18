@@ -9,7 +9,7 @@ class Model {
   }
 
   find(query, filter = {}) {
-    let records = this.collection.find(query);
+    let records = this.collection.find(query).sort({_id:-1});
     if (filter.limit) {
       records = records.limit(+filter.limit);
     }
