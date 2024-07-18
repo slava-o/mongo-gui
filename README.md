@@ -120,7 +120,5 @@ This setup guide should provide your users with all they need to integrate the O
  ![mongo-gui-controls-v2](https://user-images.githubusercontent.com/36033761/85231098-143a5680-b412-11ea-8fe2-1b628d70cc49.png)
 
 
-
-
 ## License
-[MIT](https://github.com/slava-o/mongo-gui/blob/master/LICENSE)
+[MIT](https://github.com/arunbandari/mongo-gui/blob/master/LICENSE)
